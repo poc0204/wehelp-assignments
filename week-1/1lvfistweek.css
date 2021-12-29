@@ -1,8 +1,10 @@
 * reset */
-body, h1, ul { margin: 0; }
+body, h1, ul { margin: 0px; }
 
 * { box-sizing: border-box; }
-
+body{
+  margin: 0px;
+}
 ul {
   list-style: none; 
   
@@ -17,7 +19,7 @@ a {
 /* NavBar */
 nav {
   background:white;
-  margin-top: 15px;
+  margin: 15px 5px 0px;
  
 }
 h1 { /* Logo */
@@ -77,6 +79,7 @@ input:checked ~ .menu {
   display: flex;
   justify-content: center;
   align-items: center;
+
   }
   .secondh1{
   text-align: center;
