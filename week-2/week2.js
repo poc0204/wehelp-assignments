@@ -65,7 +65,10 @@ function maxProduct(nums){
                 one = one + alltime+1;
                
         }
-        var myArrayNew = text.filter(el => el);
+              var myArrayNew = text.filter(function (value) {
+                return value != null
+        });
+       
 
         alert( Math.max(...myArrayNew) )
     
