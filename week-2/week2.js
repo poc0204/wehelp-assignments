@@ -84,6 +84,7 @@ maxProduct([-1,-2,0])
 function twoSum(nums, target){
         var test = 0
         var nums1 = nums
+        var wow = new Array()
         nums.forEach(function(numsitem, numsindex, array) {
                 nums1.forEach(function(nums1item, nums1index, array) {
                 
@@ -93,14 +94,16 @@ function twoSum(nums, target){
                 }
                 if(test==target){
                 
-                        console.log( numsindex)
+                        
+                        wow.push(numsindex )
+                       
                 }
                 
 
         });
         });
-                        
-                       
+         
+                       return wow
 
         
         }
@@ -108,3 +111,4 @@ function twoSum(nums, target){
 
 let result = twoSum([2,11,7,15],9)
 console.log(result)
+
