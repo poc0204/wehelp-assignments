@@ -112,3 +112,30 @@ function twoSum(nums, target){
 let result = twoSum([2,11,7,15],9)
 console.log(result)
 
+function maxZeros(nums){
+        var test = new Array()
+        var text = 0 
+        for(var i = 0;i<=nums.length;i++){
+                
+                if(nums[i] == 0){
+                        text = text+1
+                        if(i==nums.length-1){
+                                test.push(text)
+                        }
+                }
+                if(nums[i] == 1){
+                        test.push(text)
+                        
+                        text = 0
+                       
+                }
+              
+                
+        }
+        alert( Math.max(...test) )
+                
+}       
+maxZeros([0,1,0,0]);
+maxZeros([1,0,0,0,0,1,0,1,0,0]);
+maxZeros([1,1,1,1,1]);
+maxZeros([0,0,0,1,1]);
