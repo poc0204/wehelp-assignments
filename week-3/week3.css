@@ -84,8 +84,8 @@ input {
   .allimg {
     flex: none;
     background-color: powderblue;
-    margin: 22px;
-    width:auto;
+    margin: 21px;
+    width:255px;
 }
 
   
@@ -99,7 +99,20 @@ input {
     margin: 0px;
     
 }
+.allimg > span > p  {
+  margin: 0px;
+  
 
+}
+.allimg > span{
+  font-size: 15px;
+}
+.btn{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+
+}
   @media only screen and (max-width:1213px){
     .third{
         width: 90%;
@@ -111,7 +124,7 @@ input {
     }
     .allimg > p >  img{
         width: 100%;
-        
+      
     }
 }
  
