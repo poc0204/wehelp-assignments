@@ -35,6 +35,30 @@ function reqListener () {
             pp.appendChild(bigp);
             
         }
+        let btn = document.getElementById("btn")
+        let list = document.getElementById("third")
+        var timesstart = 7
+        var timesend = 15
+        btn.addEventListener("click", function(){
+            
+            for(var i = timesstart+1 ; i <= timesend ;i++){
+                if( i < allimgs.length){
+                    third.innerHTML =  third.innerHTML +`
+                
+                    <div class="allimg">  
+                        <p id="allimgss7"><img src="${allimgs[i]}"></p>
+                        <span id="allstitles7"><p>${allstitles[i]}</p></span>
+                    </div>
+                    `;
+
+                }
+                if( i == allimgs.length){
+                    document.getElementById("btn").style.visibility="hidden"
+                }
+            }
+            timesstart = timesstart+8
+            timesend =  timesend+8
+        })
     }
 
 var oReq = new XMLHttpRequest();
