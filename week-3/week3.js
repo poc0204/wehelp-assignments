@@ -36,7 +36,7 @@ function reqListener () {
             
         }
         let btn = document.getElementById("btn")
-        let list = document.getElementById("third")
+        let third = document.getElementsByClassName("third")
         var timesstart = 7
         var timesend = 15
         btn.addEventListener("click", function(){
