@@ -1,6 +1,6 @@
 
 function reqListener () {
-   
+   Permissions-Policy: interest-cohort=()
     var ob=JSON.parse(this.responseText)
     
     var jpg1 = new RegExp('jpg','i');// 忽略大小寫
