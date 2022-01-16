@@ -1,6 +1,6 @@
 
 function reqListener () {
-   
+    
     var ob=JSON.parse(this.responseText)
     
     var jpg1 = new RegExp('jpg','i');// 忽略大小寫
@@ -36,7 +36,7 @@ function reqListener () {
             
         }
         let btn = document.getElementById("btn")
-        let third = document.getElementsByClassName("third")
+        let third = document.getElementById("third")
         var timesstart = 7
         var timesend = 15
         btn.addEventListener("click", function(){
