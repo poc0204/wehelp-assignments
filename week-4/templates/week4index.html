@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"  type="text/css" href="{{ url_for('static', filename='week4index.css') }}">
+    <title>第一階第四周</title>
+</head>
+<body>
+    <header>
+        <div>
+            <h1>歡迎光臨，請輸入帳號密碼</h1>
+        </div>
+    </header>
+    <second>
+        <form action="/signin" method="post"> 
+        <h2>登入系統</h2>
+        
+        <P >帳號 &ensp; <input name="account"></P>
+
+        <P>密碼 &ensp; <input name="account_password" type="password"></P>
+
+        <input type=submit value="登入">
+       </form>
+    </second>
+</body>
+</html>
