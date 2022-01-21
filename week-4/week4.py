@@ -1,4 +1,3 @@
-from this import s
 from flask import Flask, redirect, url_for, render_template,request,session
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'laowangaigebi' 
