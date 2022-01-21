@@ -2,13 +2,12 @@ from flask import Flask, redirect, url_for, render_template,request,session
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'usertest' 
 
-
 @app.route("/")
 def home():
     account = session.get('account')
-    if account == 'test' :
+    if account != None :
         return redirect(url_for('member'))
-    if account != 'test' :
+    if account == None  :
         return render_template("week4index.html")
 
 @app.route("/signin", methods=["POST","GET"])
@@ -35,17 +34,15 @@ def error():
 @app.route("/member")
 def member():
     account = session.get('account')
-    user = "test"
-    if account == user :
+    if account != None :
         return render_template("week4member.html")
-    if account != user :
+    if account == None :
         return redirect(url_for('home'))
 
 
 @app.route("/signout")
 def signout():
-   
-    session.pop('account', None)
+    session.clear()
     return  redirect(url_for('home'))
 
 if __name__=="__main__":
