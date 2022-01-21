@@ -1,14 +1,15 @@
-from cgitb import text
-from datetime import date
-from email import message
-import re
-from wsgiref.util import request_uri
+from this import s
 from flask import Flask, redirect, url_for, render_template,request,session
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'laowangaigebi' 
 
 @app.route("/")
 def home():
-    return render_template("week4index.html")
+    account = session.get('account')
+    if account == 'test' :
+        return redirect(url_for('member'))
+    if account != 'test' :
+        return render_template("week4index.html")
 
 @app.route("/signin", methods=["POST","GET"])
 def signin():
@@ -16,29 +17,36 @@ def signin():
     account = request.form["account"]
     account_password = request.form["account_password"]
     if account == user and account_password == user :
+        session['account'] = account
         return redirect("/member")
     if account == "" or account_password =="" :
         error_message = "請輸入帳號、密碼"
-        return redirect(url_for("error",error=error_message))
+        return redirect(url_for("error",message=error_message))
     if account != user or  account_password != user :
         error_message = "帳號、密碼輸入錯誤"
-        return redirect(url_for("error",error=error_message))
+        return redirect(url_for("error",message=error_message))
 
-@app.route("/error/message<error>")
-def error(error):
-    return render_template("week4error.html",error_message=error)
+@app.route("/error/")
+def error():
+    message = request.args.get("message") 
+    return render_template("week4error.html",error_message={}).format(message)
 
 
 @app.route("/member")
-def memnber():
-    return render_template("week4member.html")
+def member():
+    account = session.get('account')
+    user = "test"
+    if account == user :
+        return render_template("week4member.html")
+    if account != user :
+        return redirect(url_for('home'))
 
 
-
-@app.route("/signout", methods=["POST","GET"])
+@app.route("/signout")
 def signout():
-    account = request.form['account']
-    return account
+   
+    session.pop('account', None)
+    return  redirect(url_for('home'))
 
 if __name__=="__main__":
     app.run(debug=True,port=3000,threaded=True)
