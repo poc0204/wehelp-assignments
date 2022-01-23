@@ -51,9 +51,7 @@ function reqListener () {
                 input_stitle = document.createTextNode(all_stitles[i]);
                 get_span.appendChild(input_stitle);
             }
-            start_time = start_time + 8; 
-            end_time = end_time + 8;
-            return all_stitles.length
+           
         }
         
         let btn = document.getElementById("btn")
