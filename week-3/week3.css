@@ -81,7 +81,7 @@ input {
       flex-wrap:wrap;
      
   }
-  .allimg {
+  .third > div {
     flex: none;
     background-color: powderblue;
     margin: 21px;
@@ -89,22 +89,22 @@ input {
 }
 
   
-  .allimg > p > img {
+  .third >  div > p > img {
       width: 255px;
       height: 180px;
       
   }
 
-  .allimg > p  {
+  .third >  div >  p  {
     margin: 0px;
     
 }
-.allimg > span > p  {
+.third >  div >  span > p  {
   margin: 0px;
   
 
 }
-.allimg > span{
+.third >  div > span{
   font-size: 15px;
 }
 .btn{
