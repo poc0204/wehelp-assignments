@@ -30,8 +30,7 @@ function reqListener () {
                 all_div.class = "allimg";
                 all_div.id = "allimg"+[i];
                 third.appendChild(all_div);
-            }
-            for(var i = start_time ; i<=end_time;i++){
+        
                 let get_img = document.getElementById("allimg"+[i])
                 let put_p = document.createElement("p");     
                 put_p.id = "allimgs"+[i];
@@ -40,12 +39,11 @@ function reqListener () {
                 let show_img = document.createElement("img"); 
                 show_img.src=all_imgs[i];
                 get_p.appendChild(show_img);
-            }
-            for(var i = start_time ; i<=end_time;i++){
+ 
                 let all_span = document.createElement("span");
                 all_span.id = "all_stitle"+[i];
-                let get_img = document.getElementById("allimg"+[i]);
-                get_img.appendChild(all_span);
+                let get__all_img = document.getElementById("allimg"+[i]);
+                get__all_img.appendChild(all_span);
                 let get_span = document.getElementById('all_stitle'+[i]);
                 let input_stitle = document.createElement("p");    
                 input_stitle = document.createTextNode(all_stitles[i]);
