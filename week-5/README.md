@@ -21,7 +21,7 @@ SELECT member WHERER:
 
 SELECT member WHERER AND:
 
-![image](https://github.com/poc0204/wehelp-assignments/blob/main/week-5/WHERERAND.bmp)
+![image](https://github.com/poc0204/wehelp-assignments/blob/main/week-5/WHEREAND.bmp)
 
 UPDATE test2:
 
