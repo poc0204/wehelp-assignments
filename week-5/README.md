@@ -1,3 +1,7 @@
-546
+member:
 
-![image](https://raw.githubusercontent.com/poc0204/wehelp-assignments/main/week-5/1.bmp)
+![image](https://github.com/poc0204/wehelp-assignments/blob/main/week-5/member.bmp)
+
+message:
+
+![image](https://github.com/poc0204/wehelp-assignments/blob/main/week-5/member.bmp)
