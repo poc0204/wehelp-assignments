@@ -45,4 +45,4 @@ SELECT JOIN:
 
 SELECT JOIN WHERE:
 
-![image](https://github.com/poc0204/wehelp-assignments/blob/main/week-5/JOINWHERE.bmp)
+![image](https://github.com/poc0204/wehelp-assignments/blob/main/week-5/JOINTEST.bmp)
