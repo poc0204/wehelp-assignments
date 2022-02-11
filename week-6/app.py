@@ -10,10 +10,10 @@ app.config['SECRET_KEY'] = "usertest"
 def index():
     username = session.get('username')
     if username != None:
-        return render_template("member.html")
+        return redirect("member")
     else:
         return render_template("index.html")
-        
+
 @app.route("/signup",methods=["POST"])
 def signup():
     name = request.form["name"]
@@ -74,6 +74,8 @@ def member():
         cursor.close()
         connection.close()
         return render_template("member.html",name=data_clean(name,1))
+    else:
+        return redirect("/")
         
 
 
