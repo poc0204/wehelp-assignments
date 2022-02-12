@@ -20,23 +20,22 @@ def signup():
     password = request.form["password"]
     username = request.form["username"]
     password = request.form["password"]
-    print(username)
     connection = link_mysql()
     cursor = connection.cursor()
-    sql = " select username from member ; "
+    sql = " select username from member where username = '{}' ; ".format(username)
     cursor.execute(sql)
     all_username = cursor.fetchall()
-    for i in range(len(all_username)):
-        if username == data_clean(all_username[i],1) and password == data_clean(all_username[i],1) :
-            error_message = "帳號已經被註冊"
-            return redirect(url_for("error",message=error_message))
+    if all_username == []:
+        sql = " insert into member (name ,username ,password) values ('{}' ,'{}' ,'{}');".format(name,username,password)
+        cursor.execute(sql)
+        connection.commit()
+        cursor.close()
+        connection.close()    
+        return redirect("/")
+    error_message = "帳號已經被註冊"
+    return redirect(url_for("error",message=error_message))
 
-    sql = " insert into member (name ,username ,password) values ('{}' ,'{}' ,'{}');".format(name,username,password)
-    cursor.execute(sql)
-    connection.commit()
-    cursor.close()
-    connection.close()
-    return redirect("/")
+
 
 @app.route("/signin",methods=["POST"])
 def signin():
@@ -45,21 +44,22 @@ def signin():
 
     connection = link_mysql()
     cursor = connection.cursor()
-    sql = " select username from member ; "
+    sql = " select username from member where username = '{}' ; ".format(username)
     cursor.execute(sql)
     all_username = cursor.fetchall()
-    sql = " select password from member ; "
+    sql = " select password from member where password = '{}' ; ".format(password)
     cursor.execute(sql)
     all_password = cursor.fetchall()
-    for i in range(len(all_username)):
-        if username == data_clean(all_username[i],1) and password == data_clean(all_password[i],1) :
-            session['username'] = username
-            return redirect("member")
-
     cursor.close()
     connection.close()
-    error_message = "帳號、密碼輸入錯誤"
-    return redirect(url_for("error",message=error_message))
+    print(all_username)
+    print("password",all_password)
+    if all_username == [] or all_password == []:
+        error_message = "帳號、密碼輸入錯誤"
+        return redirect(url_for("error",message=error_message))
+
+    session['username'] = username
+    return redirect("member")
 
 
 @app.route("/member")
