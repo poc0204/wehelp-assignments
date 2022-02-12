@@ -8,8 +8,8 @@ app.config['SECRET_KEY'] = "usertest"
 
 @app.route("/")
 def index():
-    username = session.get('username')
-    if username != None:
+    name = session.get('name')
+    if name != None:
         return redirect("member")
     else:
         return render_template("index.html")
@@ -35,8 +35,6 @@ def signup():
     error_message = "帳號已經被註冊"
     return redirect(url_for("error",message=error_message))
 
-
-
 @app.route("/signin",methods=["POST"])
 def signin():
     username = request.form["username"]
@@ -44,36 +42,27 @@ def signin():
 
     connection = link_mysql()
     cursor = connection.cursor()
-    sql = " select username from member where username = '{}' ; ".format(username)
+    
+    sql = " select name ,username , password  from member where username = '{}' ; ".format(username)
     cursor.execute(sql)
     all_username = cursor.fetchall()
-    sql = " select password from member where password = '{}' ; ".format(password)
-    cursor.execute(sql)
-    all_password = cursor.fetchall()
     cursor.close()
     connection.close()
-    print(all_username)
-    print("password",all_password)
-    if all_username == [] or all_password == []:
+
+    if all_username == [] or all_username[0][2] != password :
         error_message = "帳號、密碼輸入錯誤"
         return redirect(url_for("error",message=error_message))
 
-    session['username'] = username
+    name = all_username[0][0]
+    session['name'] = name
     return redirect("member")
 
 
 @app.route("/member")
 def member():
-    username = session.get('username')
-    if username != None:
-        connection = link_mysql()
-        cursor = connection.cursor()
-        sql = " select name from member where username= '{}'".format(username)
-        cursor.execute(sql)
-        name = cursor.fetchone()
-        cursor.close()
-        connection.close()
-        return render_template("member.html",name=data_clean(name,1))
+    name = session.get('name')
+    if name != None:
+       return render_template("member.html",name=name)
     else:
         return redirect("/")
         
@@ -94,6 +83,8 @@ def data_clean(data,method):
     if method ==0 :
         data=data.split(",")
         return data
+    elif data == None:
+        return None    
     else:
         string =""
         for i in data:
