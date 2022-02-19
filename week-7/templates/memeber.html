@@ -14,20 +14,21 @@
         <h1>歡迎光臨，這是會員首頁</h1>
     </header>
     <second>
-        <h3>{{name}}，歡迎登入系統</h3>
+        <h2>{{name}}，歡迎登入系統</h2>
 
-        <form action="/singout" method="GET"> 
-            <input type=submit value="登出"> </p>
-        
-        </form> 
         <div>
+            <a href="/singout" method="GET"  >登出系統</a> </p>
+        
+    
+     
             <input id="username" name = "username">
             <button id ="btn" onclick="select_click()" > 搜尋 </button></p>
-            <h2 id="showname" ></h2>
+            <h3 id="showname" ></h3>
+            <h2>更新我的姓名</h2>
             <input id="updataname" name = "updataname">
             <button id ="btn" onclick="update_click()" > 更新 </button></p>
-            <h2 id="showupdate" ></h2>
-        </div>
+            <h3 id="showupdate" ></h3>
+       </div>
     </second>
 </body>
 </html>
