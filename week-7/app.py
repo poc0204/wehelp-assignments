@@ -114,8 +114,10 @@ def api_member():
 
     username = session.get('username')
     if username != [] :
-        updataname =  str(request.data, 'utf-8')
-        updataname = updataname[9:-2]
+        updataname =  json.loads(str(request.data, 'utf-8'))
+        # updataname = updataname[9:-2]
+        # updataname =  request.values['name']
+        updataname = updataname['name']
         connection = link_mysql() 
         cursor = connection.cursor()
         sql = " update member set name = '{}' where username = '{}' ; ".format(updataname,username)
