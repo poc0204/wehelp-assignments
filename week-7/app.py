@@ -5,6 +5,8 @@ from mysql.connector import Error
 from flask import Flask ,redirect,url_for ,render_template , request , session 
 import json
 
+from numpy import rint
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "usertest"
 
@@ -56,7 +58,9 @@ def signin():
         return redirect(url_for("error",message=error_message))
 
     name = all_username[0][0]
+
     session['name'] = name
+    session['username'] = username
     return redirect("member")
 
 
@@ -96,11 +100,32 @@ def api_members():
         
 
     else:
-       for_json = 'null'
+       for_json = None
+       print(for_json)
    
     cursor.close()
     connection.close()
     return {"data":for_json}
+
+
+
+@app.route("/api/member", methods=['POST'])
+def api_member():
+
+    username = session.get('username')
+    if username != [] :
+        updataname =  str(request.data, 'utf-8')
+        updataname = updataname[9:-2]
+        connection = link_mysql() 
+        cursor = connection.cursor()
+        sql = " update member set name = '{}' where username = '{}' ; ".format(updataname,username)
+        cursor.execute(sql)
+        connection.commit()
+        cursor.close()
+        connection.close()
+        return {"ok": username != [] }
+    else:
+        return {"error": username == [] }
 
 def data_clean(data,method):
     if method ==0 :
